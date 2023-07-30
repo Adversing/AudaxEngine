@@ -57,6 +57,10 @@ public abstract class Story {
         return characters.stream().filter(character -> character.getCharacterInformation().getId().equals(id)).findFirst().orElse(null);
     }
 
+    public Chapter getChapterById(String id) {
+        return chapters.stream().filter(chapter -> chapter.getInformation().getId().equals(id)).findFirst().orElse(null);
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Story.class.getSimpleName() + "[", "]")
