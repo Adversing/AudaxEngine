@@ -13,10 +13,7 @@ import me.adversing.engine.obj.entities.gameobject.GameObject;
 import me.adversing.engine.obj.entities.gameobject.properties.Interactable;
 import me.adversing.engine.obj.map.area.GameArea;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 
 /**
@@ -56,7 +53,8 @@ public abstract class Character implements Interactable {
      *
      * @param interactable The interactable that interacted with the character.
      */
-    public void interactedBy(Interactable interactable) {}
+    public void interactedBy(Interactable interactable) {
+    }
 
     /**
      * This method is called when the character interacts with a Character.
@@ -116,18 +114,16 @@ public abstract class Character implements Interactable {
      *
      * @return The main feeling of the character, expressed as Feeling or null.
      */
-    public Feeling getDominantFeeling() {
+    public Optional<Feeling> getDominantFeeling() {
         HashMap<Feeling, Integer> feelingsCount = new HashMap<>();
         for (HashMap<Choice, Feeling> feeling : feelings) {
             for (Feeling f : feeling.values()) {
-                if (feelingsCount.containsKey(f)) {
-                    feelingsCount.put(f, feelingsCount.get(f) + 1);
-                } else {
-                    feelingsCount.put(f, 1);
-                }
+                feelingsCount.put(f, feelingsCount.getOrDefault(f, 0) + 1);
             }
         }
-        return feelingsCount.entrySet().stream().max(Map.Entry.comparingByValue()).stream().findFirst().orElse(null).getKey();
+        return feelingsCount.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey);
     }
 
 
