@@ -11,6 +11,7 @@ import me.adversing.engine.obj.map.location.info.LocationInformation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.UUID;
 
 /**
  * This class represents a game area.
@@ -21,7 +22,7 @@ public abstract class GameArea {
 
     private GameAreaInformation information;
     private List<HashMap<Item, Boolean>> itemsThatCanUnlockThisArea;
-    private boolean isInventory;
+    private final boolean isInventory;
 
     /**
      * This constructor is used for the game areas. Don't use this constructor for the inventory.
@@ -45,7 +46,7 @@ public abstract class GameArea {
      */
     protected GameArea() {
         this.isInventory = true;
-        this.information = new GameAreaInformation("inventory", "Inventory", "The inventory of the character.", null, null);
+        this.information = new GameAreaInformation("inventory#%s".formatted(UUID.randomUUID()), "Inventory", "The inventory of the character.", null, null);
         this.itemsThatCanUnlockThisArea = null;
     }
 
