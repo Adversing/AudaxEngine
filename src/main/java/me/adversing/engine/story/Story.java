@@ -35,6 +35,7 @@ public abstract class Story {
      * @param characters  The story characters.
      * @param map         The story map.
      * @param isCompleted The story completion status. This is used to determine if the story is completed or not.
+     * @param isActive    The story activity status. This is used to determine if the story is active or not.                    
      * @see StoryInformation
      * @see Chapter
      * @see Character
