@@ -12,12 +12,25 @@ import java.util.StringJoiner;
  * This enum represents the relationship status of a character.
  */
 public enum RelationShipStatus {
-    ENEMY("Enemy"),
-    NEUTRAL("Neutral"),
-    FRIEND("Friend"),
-    BEST_FRIEND("Best Friend"),
-    LOVER("Lover"),
-    FAMILY("Family");
+    ACQUAINTANCE("Acquaintance"),           // Casual acquaintances
+    ALLY("Ally"),                           // Strong alliance or partnership
+    BEST_FRIEND("Best Friend"),             // Strongest friendship
+    BETRAYED("Betrayed"),                   // One NPC has betrayed the other
+    BROKEN("Broken")  ,                     // Relationship has been broken or severed
+    ENEMY("Enemy"),                         // Hostile relationship
+    FAMILY("Family"),                       // Family relationship
+    FRIEND("Friend"),                       // Friendship
+    LOVER("Lover"),                         // Romantic involvement, specifically as lovers
+    MENTOR("Mentor"),                       // Mentor or mentee relationship
+    NEUTRAL("Neutral"),                     // Neutral or indifferent relationship
+    NONE("None"),                           // No relationship or unknown
+    RESCUED("Rescued"),                     // One NPC has rescued the other
+    RIVAL("Rival"),                         // Competitive relationship
+    ROMANTIC_PARTNER("Romantic Partner"),   // Romantic involvement
+    SUSPICIOUS("Suspicious"),               // Suspicion or doubt in the relationship
+    TRUSTWORTHY("Trustworthy");             // High level of trust between NPCs
+
+
 
     @Getter
     private final String readableName;
