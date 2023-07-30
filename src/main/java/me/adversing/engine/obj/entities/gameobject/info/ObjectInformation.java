@@ -3,6 +3,7 @@ package me.adversing.engine.obj.entities.gameobject.info;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import me.adversing.engine.obj.entities.character.inv.Inventory;
 import me.adversing.engine.obj.entities.gameobject.type.ObjectType;
 import me.adversing.engine.obj.map.area.GameArea;
 
@@ -53,8 +54,10 @@ public class ObjectInformation {
      * @param area The game area of the object. This can be an instance of GameArea or Inventory. If it's an instance of Inventory, it will be cast to GameArea.
      */
     public void setGameArea(Object area) {
-        if (!(area instanceof GameArea))
-            throw new IllegalArgumentException("The area must be an instance of GameArea OR Inventory.");
+        if (!(area instanceof Inventory))
+            if (!(area instanceof GameArea)) {
+                throw new IllegalArgumentException("The area must be an instance of GameArea OR Inventory.");
+            }
         this.gameArea = (GameArea) area;
     }
 
